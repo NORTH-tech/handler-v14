@@ -5,7 +5,7 @@ module.exports = async (client, interaction) => {
         case interaction.type === 2:
             try {
                 var command = require(`../commands/slash/${interaction.commandName}`);
-                await command(interaction, client);
+                await command.function(interaction, client);
                 break;
             } catch (e) {
                 console.error(e)
@@ -25,7 +25,6 @@ module.exports = async (client, interaction) => {
         //selectmenu
         case interaction.isSelectMenu():
             var customId = interaction.customId;
-            if (customId.startsWith("skinchoice")) customId = customId.split("_")[0];
             try {
                 var command = require(`../commands/menu/${customId}`);
                 await command(interaction, client);

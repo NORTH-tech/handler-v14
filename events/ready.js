@@ -1,8 +1,4 @@
 module.exports = async (client) => {
-    //command_loading
-    const commandlist = require("../data/commands")
-    await client.application.commands.set(commandlist)
-
     //icon&name set
     const iconurl = await client.user.displayAvatarURL()
     const name = await client.user.username
@@ -16,5 +12,5 @@ module.exports = async (client) => {
         })
     }, 10000)
 
-    console.log("ready")
+    console.log("Bot is now online!!!")
 }
