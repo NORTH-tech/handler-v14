@@ -1,4 +1,3 @@
-require('date-utils');
 module.exports = async (client) => {
     //command_loading
     const commandlist = require("../data/commands")
