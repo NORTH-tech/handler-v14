@@ -11,7 +11,7 @@ const client = new Client({
 //client-event-loading
 const events = readdirSync(`./events`).filter(files => files.endsWith('.js'));
 for (const file of events) {
-    const event = require(`../events/${file}`);
+    const event = require(`./events/${file}`);
     client.on(file.split('.')[0], event.bind(null, client))
 };
 
