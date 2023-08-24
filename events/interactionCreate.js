@@ -13,9 +13,8 @@ module.exports = async (client, interaction) => {
             }
         //button
         case interaction.isButton():
-            var customId = interaction.customId;
             try {
-                var command = require(`../commands/button/${customId}`);
+                var command = require(`../commands/button/${interaction.customId}`);
                 await command(interaction, client)
                 break;
             } catch (e) {
@@ -24,9 +23,8 @@ module.exports = async (client, interaction) => {
             }
         //selectmenu
         case interaction.isSelectMenu():
-            var customId = interaction.customId;
             try {
-                var command = require(`../commands/menu/${customId}`);
+                var command = require(`../commands/menu/${interaction.customId}`);
                 await command(interaction, client);
                 break;
             } catch (e) {
@@ -35,9 +33,8 @@ module.exports = async (client, interaction) => {
             }
         //modal
         case interaction.type === 5:
-            var customId = interaction.customId;
             try {
-                var command = require(`../commands/modal/${customId}`);
+                var command = require(`../commands/modal/${interaction.customId}`);
                 await command(interaction, client);
                 break;
             } catch (e) {

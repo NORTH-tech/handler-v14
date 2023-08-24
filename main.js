@@ -1,5 +1,5 @@
 //module-loading
-const { Client, GatewayIntentBits, REST, Routes } = require("discord.js")
+const { Client, GatewayIntentBits, REST, Routes, Events } = require("discord.js")
 const { readdirSync } = require('fs');
 require('dotenv').config();
 
@@ -8,11 +8,14 @@ const client = new Client({
     intents: Object.values(GatewayIntentBits).filter(Number.isInteger)
 });
 
+//message-command-setting
+global.prefix = "!"
+
 //client-event-loading
 const events = readdirSync(`./events`).filter(files => files.endsWith('.js'));
 for (const file of events) {
     const event = require(`./events/${file}`);
-    client.on(file.split('.')[0], event.bind(null, client))
+    client.once(Events[file.split('.')[0]], event.bind(null, client))
 };
 
 //set-slashCommands
